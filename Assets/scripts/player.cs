@@ -1,0 +1,31 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class player : MonoBehaviour
+{
+    [SerializeField] float speed=5f;
+    [SerializeField] float jumpForce=7f;
+    bool isGrounded = false;
+    Rigidbody2D rb;
+    [SerializeField] LayerMask groundLayer; 
+    // Start is called before the first frame update
+    void Start()
+    {
+        rb  = GetComponent<Rigidbody2D>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        float horizontalInput = Input.GetAxis("Horizontal");
+        rb.velocity = new Vector2(horizontalInput * speed, rb.velocity.y);
+        Collider2D col = GetComponent<Collider2D>();
+        isGrounded = Physics2D.OverlapCircle(transform.position - transform.up * ((col.bounds.extents.y / transform.localScale.y - col.offset.y) * transform.localScale.y), 0.01f, groundLayer);
+
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+        }
+    }
+}

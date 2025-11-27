@@ -1,0 +1,24 @@
+{
+    "objectsData": [
+        {
+            "colors": [],
+            "styles": [
+                {
+                    "objID": "SampleScene_map_0",
+                    "styleType": 0
+                }
+            ],
+            "showComponents": [
+                {
+                    "objID": "SampleScene_map_0",
+                    "show": false
+                },
+                {
+                    "objID": "SampleScene_Light 2D (1)_3",
+                    "show": true
+                }
+            ],
+            "sceneName": "SampleScene"
+        }
+    ]
+}
